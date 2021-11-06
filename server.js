@@ -4,11 +4,8 @@ const bcrypt = require('bcrypt-nodejs');
 const db = require('knex')({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
-      port : 5432,
-      user : 'manasbohat01',
-      password : '',
-      database : 'facify'
+      connectionString : process.env.DATABASE_URL,
+      ssl : true
     }
 });
 
