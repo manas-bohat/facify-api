@@ -42,8 +42,11 @@ const handleRegister = (req, res, db, bcrypt)=> {
             })
         })
         .then(trx.commit)
-        .catch(trx.rollback)
-    }).catch(err => res.status(400).json("Email already registered"))
+        .catch(err => {
+            trx.rollback;
+            res.status(400).json("Email already registered");
+        })
+    }).catch(err => res.status(400).json("Error"))
 }
 
 module.exports = {
